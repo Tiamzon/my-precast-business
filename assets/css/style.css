@@ -1,0 +1,279 @@
+/* =========================================
+   1. VARIABLES & SETUP
+   ========================================= */
+
+:root {
+    /* BRAND COLORS - Construction Theme */
+    --primary-color: #004d40;   /* Deep Teal/Green (Professional, Trust) */
+    --secondary-color: #ffc107; /* Amber/Yellow (Construction accent) */
+    --text-dark: #333333;       /* Dark Grey (Softer than pure black) */
+    --text-light: #ffffff;      /* White */
+    --bg-light: #f4f4f4;        /* Light Grey Background */
+    
+    /* SPACING & FONTS */
+    --max-width: 1200px;        /* Maximum width of the website */
+    --font-main: 'Arial', sans-serif; /* We can add Google Fonts later */
+}
+
+/* THE RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Crucial! Makes box sizes include padding/borders */
+}
+
+/* BASE STYLES */
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+}
+
+/* UTILITY CLASSES */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto; /* Centers the container in the middle of the screen */
+    padding: 0 20px; /* Adds breathing room on mobile screens */
+}
+
+/* LINKS (Removes the ugly blue underline) */
+a {
+    text-decoration: none;
+    color: var(--text-dark);
+}
+
+ul {
+    list-style: none; /* Removes bullet points */
+}
+
+/* =========================================
+   2. HEADER & NAVIGATION
+   ========================================= */
+
+header {
+    background-color: var(--primary-color); /* Uses our Teal variable */
+    color: #fff;
+    padding: 1rem 0; /* 1rem is usually 16px. Top/Bottom padding. */
+    position: sticky; /* KEEPS NAV AT TOP when you scroll! */
+    top: 0;
+    z-index: 1000; /* Layers it above everything else */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+header .container {
+    display: flex; /* ACTIVATES FLEXBOX LAYOUT */
+    justify-content: space-between; /* Pushes Logo to Left, Nav to Right */
+    align-items: center; /* Vertically centers them */
+}
+
+/* LOGO STYLING */
+.logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff; /* White text */
+    text-transform: uppercase;
+}
+
+.logo span {
+    color: var(--secondary-color); /* The Yellow Accent */
+}
+
+/* NAVIGATION LINKS */
+.nav-links {
+    display: flex; /* Makes the list items sit side-by-side */
+    gap: 20px; /* 2026 Best Practice: Adds space between items without margins */
+}
+
+.nav-links a {
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease; /* Smooth fade when hovering */
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color); /* Turns yellow when mouse is over it */
+}
+
+/* CALL TO ACTION BUTTON (Get Quote) */
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--primary-color) !important; /* Force text color */
+    padding: 0.5rem 1.2rem;
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ffca2c; /* Slightly lighter yellow */
+    transform: scale(1.05); /* Grows slightly bigger */
+}
+
+/* =========================================
+   3. HERO SECTION (The Big Banner)
+   ========================================= */
+
+#hero {
+    /* BACKGROUND: A dark teal gradient. 
+       Later, you can replace this with: url('../images/hero-bg.jpg') */
+    background: linear-gradient(rgba(0, 77, 64, 0.9), rgba(0, 77, 64, 0.7)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover; /* Ensures image covers the whole box */
+    background-position: center; /* Centers the image */
+    color: #fff; /* White text on dark background */
+    height: 80vh; /* 80% of the screen height (Viewport Height) */
+    display: flex; /* Flexbox again! */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center the text itself */
+    padding: 0 20px;
+}
+
+#hero h1 {
+    font-size: 3rem; /* Huge text */
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Spacing between letters for a premium look */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Shadow makes text pop */
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px; /* Don't let the paragraph get too wide to read */
+}
+
+/* BUTTONS CONTAINER */
+.hero-buttons {
+    display: flex;
+    gap: 15px; /* Space between the two buttons */
+}
+
+/* SECONDARY BUTTON (Transparent Style) */
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid #fff; /* White outline */
+    color: #fff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #fff;
+    color: var(--primary-color); /* Text turns teal */
+}
+
+/* =========================================
+   4. PRODUCTS GRID (The "Magic" Layout)
+   ========================================= */
+
+.products-section {
+    padding: 4rem 0; /* Breathing room top and bottom */
+    background-color: #fff;
+    text-align: center;
+}
+
+.products-section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem; /* Push the grid down away from title */
+}
+
+/* THE GRID CONTAINER */
+.product-grid {
+    display: grid; /* ACTIVATES GRID LAYOUT */
+    
+    /* THE MAGIC LINE: 
+       - repeat(auto-fit, ...): "Fit as many columns as you can."
+       - minmax(300px, 1fr): "Columns must be at least 300px wide, 
+         but if there is extra space, stretch them (1fr) to fill it." */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
+    gap: 2rem; /* 32px space between every card (row and column) */
+    padding: 0 1rem;
+}
+
+/* THE PRODUCT CARD */
+.product-card {
+    background: #fff;
+    border-radius: 10px; /* Soft corners */
+    overflow: hidden; /* Clips the image to the rounded corners */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Floating effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Moves UP slightly when hovered */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* Shadow gets bigger */
+}
+
+/* FAKE IMAGE (Grey Box) */
+.placeholder-img {
+    width: 100%;
+    height: 200px;
+    background-color: #ddd; /* Light grey */
+    /* Eventually you will replace this div with: <img src="..." /> */
+}
+
+.product-card h3 {
+    margin: 1.5rem 0 0.5rem; /* Top, Sides, Bottom margin */
+    color: var(--primary-color);
+}
+
+.product-card p {
+    padding: 0 1.5rem 1.5rem; /* Sides and Bottom padding */
+    color: #666;
+}
+
+/* =========================================
+   5. FOOTER & CONTACT
+   ========================================= */
+
+.contact-section {
+    background-color: var(--bg-light);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+footer {
+    background-color: var(--text-dark); /* Almost black */
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+footer p {
+    opacity: 0.8; /* Slightly dim the text */
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   6. MOBILE RESPONSIVENESS (Media Queries)
+   ========================================= */
+
+/* Triggers ONLY on screens smaller than 768px (Tablets & Phones) */
+@media (max-width: 768px) {
+    
+    header .container {
+        flex-direction: column; /* Stack Logo on top of Nav */
+        gap: 1rem;
+    }
+
+    .nav-links {
+        gap: 15px; /* Smaller gaps */
+        font-size: 0.9rem; /* Smaller text */
+    }
+    
+    #hero h1 {
+        font-size: 2rem; /* Smaller title for small screens */
+    }
+    
+    #hero {
+        height: 60vh; /* Shorter banner on phone */
+    }
+}
