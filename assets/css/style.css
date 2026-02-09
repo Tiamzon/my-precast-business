@@ -4,11 +4,11 @@
 
 :root {
     /* BRAND COLORS - Construction Theme */
-    --primary-color: #004d40;   /* Deep Teal/Green (Professional, Trust) */
-    --secondary-color: #ffc107; /* Amber/Yellow (Construction accent) */
+    --primary-color: #C59D5F;   /* Deep Metallic Gold (Professional, Trust) */
+    --secondary-color: #222222; /*  (Construction accent) */
     --text-dark: #333333;       /* Dark Grey (Softer than pure black) */
     --text-light: #ffffff;      /* White */
-    --bg-light: #f4f4f4;        /* Light Grey Background */
+    --bg-light: #f9f9f9;        /* Light Grey Background */
     
     /* SPACING & FONTS */
     --max-width: 1200px;        /* Maximum width of the website */
@@ -52,7 +52,7 @@ ul {
    ========================================= */
 
 header {
-    background-color: var(--primary-color); /* Uses our Teal variable */
+    background-color: var(--secondary-color); /* Uses our Teal variable */
     color: #fff;
     padding: 1rem 0; /* 1rem is usually 16px. Top/Bottom padding. */
     position: sticky; /* KEEPS NAV AT TOP when you scroll! */
@@ -76,7 +76,7 @@ header .container {
 }
 
 .logo span {
-    color: var(--secondary-color); /* The Yellow Accent */
+    color: var(--primary-color); /* The Yellow Accent */
 }
 
 /* NAVIGATION LINKS */
@@ -92,13 +92,13 @@ header .container {
 }
 
 .nav-links a:hover {
-    color: var(--secondary-color); /* Turns yellow when mouse is over it */
+    color: var(--secondary-color); /* Turns secondary-color when mouse is over it */
 }
 
 /* CALL TO ACTION BUTTON (Get Quote) */
 .btn-primary {
-    background-color: var(--secondary-color);
-    color: var(--primary-color) !important; /* Force text color */
+    background-color: var(--primary-color);
+    color: #000 !important; /* Make text white on the gold button */
     padding: 0.5rem 1.2rem;
     border-radius: 5px; /* Rounded corners */
     font-weight: bold;
@@ -117,7 +117,7 @@ header .container {
 #hero {
     /* BACKGROUND: A dark teal gradient. 
        Later, you can replace this with: url('../images/hero-bg.jpg') */
-    background: linear-gradient(rgba(0, 77, 64, 0.9), rgba(0, 77, 64, 0.7)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.6)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
     background-size: cover; /* Ensures image covers the whole box */
     background-position: center; /* Centers the image */
     color: #fff; /* White text on dark background */
@@ -131,11 +131,17 @@ header .container {
 }
 
 #hero h1 {
-    font-size: 3rem; /* Huge text */
+    font-size: 3rem;
     margin-bottom: 1rem;
     text-transform: uppercase;
-    letter-spacing: 2px; /* Spacing between letters for a premium look */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Shadow makes text pop */
+    letter-spacing: 2px;
+    
+    /* THE SOLID BRAND GOLD */
+    color: #C59D5F; 
+    
+    /* A subtle black shadow is CRITICAL here so the gold 
+       stands out against the background image */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
 
 #hero p {
