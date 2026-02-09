@@ -283,3 +283,10 @@ footer p {
         height: 60vh; /* Shorter banner on phone */
     }
 }
+/* CONTACT MAP */
+.map-placeholder iframe {
+    width: 100%; /* Forces map to fit the container width */
+    height: 400px; /* Sets a good height */
+    border-radius: 10px; /* Rounds the corners */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
